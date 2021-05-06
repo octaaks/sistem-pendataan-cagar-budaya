@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>GKE Haleluya Nanga Bulik | @yield('title')</title>
+    <title>Sistem Pendataan Cagar Budaya | @yield('title')</title>
 
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -87,9 +87,10 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
-                <img src="{{ asset('img/logo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-1"
+                <img src="{{ asset('res/img/logo_salatiga.png')}}" alt="Disbudpar Salatiga" class="brand-image"
                     style="opacity: 1">
-                <span style="font-size:14px" class="brand-text font-weight-light"><b>GKE</b> Haleluya Nanga Bulik</span>
+                <span style="font-size:14px" class="brand-text font-weight-light"><b>Disbudpar
+                    </b>Salatiga</span>
             </a>
 
             <!-- Sidebar -->
@@ -257,13 +258,17 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    Keluar dari dashboard admin?
+                    Keluar dari dashboard?
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
-                    <form action="/logout">
-                        <button type="submit" class="btn btn-primary">Keluar</button>
+
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="btn btn-primary">Keluar</button>
                     </form>
+
                 </div>
             </div>
         </div>

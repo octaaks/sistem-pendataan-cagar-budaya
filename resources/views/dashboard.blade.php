@@ -21,84 +21,16 @@
     <link rel="stylesheet" href="{{ asset('css-home/weekpicker.css') }}">
 
 </head>
-<div class="card">
-
-    <div class="card-body">
-        <div class="row">
-            <div class="col-lg-8">
-                <p>Menampilkan warga yang berulang tahun pada: <b> {{$tgl}} </b></p>
-                <p></p>
-            </div>
-            <div class="col-lg-4">
-                <div class="input-group" id="DateDemo">
-                    <input class="form-control" type='text' autocomplete="off" autocorrect="off" autocapitalize="off"
-                        spellcheck="false" id='weeklyDatePicker' placeholder="Pilih tanggal" />
-                    <div class="input-group-append">
-                        <button class="btn btn-info" id='weekBtn'>Tampilkan</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="card">
     <!-- /.card-header -->
     <div class="card-body">
 
-        <table id="tb1" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Kepala Keluarga</th>
-                    <th>Nama</th>
-                    <th>UL ke</th>
-                    <th>Tgl Ultah</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($data as $index => $item)
-                <tr>
-                    <td>{{ $index +1 }}</td>
-                    <td>{{ $item-> head_of_family}}</td>
-                    <td>{{ $item-> name}}</td>
-                    <td>{{ $item-> age}}</td>
-                    <td>{{ $item-> date_of_birth}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-
     </div>
     <!-- /.card-body -->
 </div>
-<div class="card">
-    <!-- /.card-header -->
-    <div class="card-body">
-        <table id="tb2" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Keluarga</th>
-                    <th>UL Ke</th>
-                    <th>Tgl Pernikahan</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($data2 as $index => $item)
-                <tr>
-                    <td>{{ $index +1 }}</td>
-                    <td>{{ $item-> name1}} - {{ $item-> name2}}</td>
-                    <td>{{ $item-> age}}</td>
-                    <td>{{ $item-> date}}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
 
-    </div>
-    <!-- /.card-body -->
-</div>
+
 <!-- jQuery -->
 <script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }}"></script>
 <!-- Bootstrap 4 -->
