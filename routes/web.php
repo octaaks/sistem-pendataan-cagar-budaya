@@ -21,8 +21,8 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::middleware('role:admin')->get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/dashboard', function () {
+    return view('user_menu.dashboard');
 })->name('dashboard');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {

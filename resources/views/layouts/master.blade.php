@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/daterangepicker/daterangepicker.css') }}">
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/summernote/summernote-bs4.min.css') }}">
-    <link rel="icon" type="image/jpg" href="/favicon.jpg" />
+    <link rel="icon" type="image/jpg" href="/res/img/logo_salatiga.png" />
 
 </head>
 
@@ -36,7 +36,7 @@
     <div class="wrapper">
 
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-dark navbar-cyan">
+        <nav class="main-header navbar navbar-expand navbar-dark navbar-grey-dark">
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
@@ -87,24 +87,24 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="/" class="brand-link">
-                <img src="{{ asset('res/img/logo_salatiga.png')}}" alt="Disbudpar Salatiga" class="brand-image"
+                <img src="{{ asset('res/img/logo_salatiga.png')}}" alt="Disbudpar Salatiga" class="brand-image mr-3"
                     style="opacity: 1">
-                <span style="font-size:14px" class="brand-text font-weight-light"><b>Disbudpar
+                <span class="brand-text font-weight-light "><b>Disbudpar
                     </b>Salatiga</span>
             </a>
 
             <!-- Sidebar -->
             <div class="sidebar">
                 <!-- Sidebar user panel (optional) -->
-                <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('admin-lte/dist/img/user2-160x160.jpg')}}" class="img-circle elevation-2"
+                        <img src="{{ Auth::user()->profile_photo_url }}" class="img-circle elevation-2"
                             alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Alexander Pierce</a>
+                        <a href="{{ route('profile.show') }}" class="d-block">{{ Auth::user()->name }}</a>
                     </div>
-                </div> -->
+                </div>
 
                 <!-- SidebarSearch Form -->
                 <div style="margin:20px" class="form-inline">
@@ -118,7 +118,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -126,21 +125,22 @@
                         <!-- Add icons to the links using the .nav-icon class
                             with font-awesome or any other icon font library -->
                         <!-- <li class="nav-header">MENU</li> -->
-                        <li class="nav-item">
-                            <a href="/admin/dashboard" class="nav-link">
+
+                        @role('user')
+                        <!-- <li class="nav-item">
+                            <a href="/dashboard" class="nav-link">
                                 <i class="nav-icon fas fa-tachometer-alt" aria-hidden="true"></i>
                                 <p>
                                     Dashboard
-                                    <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
                         <!-- <li class="nav-header">Data Warga Gereja</li> -->
                         <li class="nav-item">
-                            <a href="/admin/jemaat" class="nav-link ">
-                                <i class="nav-icon fas fa-user-friends"></i>
+                            <a href="/cagar" class="nav-link ">
+                                <i class="nav-icon fas fa-gopuram"></i>
                                 <p>
-                                    Data Jemaat
+                                    Cagar Budaya
                                     <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
@@ -148,9 +148,9 @@
 
                         <li class="nav-item">
                             <a href="/admin/pernikahan" class="nav-link ">
-                                <i class="nav-icon fas fa-birthday-cake"></i>
+                                <i class="nav-icon  fas fa-palette"></i>
                                 <p>
-                                    Data Pernikahan
+                                    Kesenian
                                     <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
@@ -158,9 +158,9 @@
 
                         <li class="nav-item">
                             <a href="/admin/liturgi" class="nav-link ">
-                                <i class="nav-icon fas fa-scroll"></i>
+                                <i class="nav-icon fas fa-landmark"></i>
                                 <p>
-                                    Liturgi Ibadah
+                                    Permuseuman
                                     <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
@@ -168,19 +168,20 @@
 
                         <li class="nav-item">
                             <a href="/admin/warta" class="nav-link ">
-                                <i class="nav-icon fas fa-bullhorn"></i>
+                                <i class="nav-icon fas fa-book"></i>
                                 <p>
-                                    Warta Gereja
+                                    Sejarah
                                     <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
                         </li>
 
+                        @else
                         <li class="nav-item">
-                            <a href="/admin/renungan" class="nav-link ">
-                                <i class="nav-icon fas fa-bible"></i>
+                            <a href="/admin/video" class="nav-link ">
+                                <i class="nav-icon fas fa-history"></i>
                                 <p>
-                                    Renungan
+                                    History Data
                                     <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
@@ -188,14 +189,25 @@
 
                         <li class="nav-item">
                             <a href="/admin/video" class="nav-link ">
-                                <i class="nav-icon fab fa-youtube"></i></i>
+                                <i class="nav-icon fas fa-file-export"></i>
                                 <p>
-                                    Video
+                                    Backup Data
                                     <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
                         </li>
 
+                        <li class="nav-item">
+                            <a href="/admin/video" class="nav-link ">
+                                <i class="nav-icon fas fa-user-friends"></i>
+                                <p>
+                                    Pengguna
+                                    <!-- <span class="badge badge-info right">2</span> -->
+                                </p>
+                            </a>
+                        </li>
+
+                        @endrole
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->
