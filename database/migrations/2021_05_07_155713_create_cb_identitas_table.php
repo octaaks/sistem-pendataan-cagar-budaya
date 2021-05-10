@@ -16,7 +16,7 @@ class CreateCbIdentitasTable extends Migration
         Schema::create('cb_identitas', function (Blueprint $table) {
             $table->increments('id');
 
-            $table->string('name');
+            $table->string('nama');
             $table->string('no_sertifikat')->unique();
             $table->string('nop_pbb')->unique();
             $table->string('alamat');

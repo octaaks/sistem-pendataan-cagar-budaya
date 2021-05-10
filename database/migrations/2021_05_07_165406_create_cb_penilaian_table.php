@@ -14,8 +14,17 @@ class CreateCbPenilaianTable extends Migration
     public function up()
     {
         Schema::create('cb_penilaian', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
+            $table->integer('cb_identitas_id')->unsigned();
+            
+            $table->string('nilai_penting');
+            $table->string('dasar_rekomendasi');
+            $table->string('penjelasan_tambahan');
+
             $table->timestamps();
+                    
+            $table->foreign('cb_identitas_id')->references('id')->on('cb_identitas')
+                ->onDelete('cascade');
         });
     }
 

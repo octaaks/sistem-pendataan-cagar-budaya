@@ -18,7 +18,7 @@ class CreateCbPenetapanTable extends Migration
             $table->integer('cb_identitas_id')->unsigned();
             
             $table->string('latar_belakang_penetapan');
-            $table->string('hasil_verifiksai');
+            $table->string('hasil_verifikasi');
 
             $table->timestamps();
                     

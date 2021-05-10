@@ -24,21 +24,21 @@ class CagarIdentitas extends Model
     
     public function deskripsi()
     {
-        return $this->hasOne('App\Models\CagarDeskripsi');
+        return $this->hasOne('App\Models\CagarDeskripsi', 'cb_identitas_id');
     }
     
     public function pemilik()
     {
-        return $this->hasMany('App\Models\CagarPemilik');
+        return $this->hasOne('App\Models\CagarPemilik', 'cb_identitas_id');
     }
     
     public function penetapan()
     {
-        return $this->hasOne('App\Models\CagarPenetapan');
+        return $this->hasOne('App\Models\CagarPenetapan', 'cb_identitas_id');
     }
     
     public function penilaian()
     {
-        return $this->hasOne('App\Models\CagarPenilaian');
+        return $this->hasOne('App\Models\CagarPenilaian', 'cb_identitas_id');
     }
 }

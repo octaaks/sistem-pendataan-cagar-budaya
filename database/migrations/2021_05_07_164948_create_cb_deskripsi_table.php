@@ -17,9 +17,12 @@ class CreateCbDeskripsiTable extends Migration
             $table->increments('id');
             $table->integer('cb_identitas_id')->unsigned();
             
-            $table->string('nilai_penting');
-            $table->string('dasar_rekomendasi');
-            $table->string('penjelasan_tambahan');
+            $table->string('deskripsi');
+            $table->string('latar_belakang_sejarah');
+            $table->string('riwayat_penanganan');
+            $table->string('status_hukum');
+            $table->string('kepemilikan');
+            $table->string('kondisi');
 
             $table->timestamps();
                     

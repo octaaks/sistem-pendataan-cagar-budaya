@@ -22,6 +22,6 @@ class CagarDeskripsi extends Model
 
     public function identitas()
     {
-        return $this->belongsTo('App\Models\CagarIdentitas');
+        return $this->belongsTo('App\Models\CagarIdentitas', 'cb_identitas_id');
     }
 }

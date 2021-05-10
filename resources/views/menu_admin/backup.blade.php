@@ -1,5 +1,5 @@
 @extends('layouts/master')
-@section('title', 'Data Cagar Budaya')
+@section('title', 'Backup Data')
 @section('content')
 
 
@@ -42,14 +42,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($data as $index => $item)
-                <tr>
-                    <td>{{ $index +1 }}</td>
-                    <td>{{ $item-> head_of_family}}</td>
-                    <td><a href="/admin/jemaat/{{ $item->id }}/view">{{ $item-> name}}</a></td>
-                    <td>{{ $item-> date_of_birth}}</td>
-                </tr>
-                @endforeach
+
             </tbody>
         </table>
     </div>

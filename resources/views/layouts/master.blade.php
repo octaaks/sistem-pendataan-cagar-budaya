@@ -48,7 +48,7 @@
             </ul>
 
             <!-- SEARCH FORM -->
-            <form class="form-inline ml-3">
+            <!-- <form class="form-inline ml-3">
                 <div class="input-group input-group-sm">
                     <input class="form-control form-control-navbar" type="search" placeholder="Search"
                         aria-label="Search">
@@ -58,7 +58,7 @@
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> -->
 
             <!-- Right navbar links -->
             <ul class="navbar-nav ml-auto">
@@ -107,7 +107,7 @@
                 </div>
 
                 <!-- SidebarSearch Form -->
-                <div style="margin:20px" class="form-inline">
+                <!-- <div style="margin:20px" class="form-inline">
                     <div class="input-group" data-widget="sidebar-search">
                         <input class="form-control form-control-sidebar" type="search" placeholder="Search"
                             aria-label="Search">
@@ -117,7 +117,7 @@
                             </button>
                         </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
@@ -146,12 +146,11 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="/admin/pernikahan" class="nav-link ">
                                 <i class="nav-icon  fas fa-palette"></i>
                                 <p>
                                     Kesenian
-                                    <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
                         </li>
@@ -161,7 +160,6 @@
                                 <i class="nav-icon fas fa-landmark"></i>
                                 <p>
                                     Permuseuman
-                                    <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
                         </li>
@@ -171,14 +169,13 @@
                                 <i class="nav-icon fas fa-book"></i>
                                 <p>
                                     Sejarah
-                                    <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
 
                         @else
                         <li class="nav-item">
-                            <a href="/admin/video" class="nav-link ">
+                            <a href="/history" class="nav-link ">
                                 <i class="nav-icon fas fa-history"></i>
                                 <p>
                                     History Data
@@ -188,7 +185,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/admin/video" class="nav-link ">
+                            <a href="/backup" class="nav-link ">
                                 <i class="nav-icon fas fa-file-export"></i>
                                 <p>
                                     Backup Data
@@ -198,7 +195,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a href="/admin/video" class="nav-link ">
+                            <a href="/user" class="nav-link ">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
                                     Pengguna
@@ -246,8 +243,8 @@
             <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
-        <footer class="main-footer mt-5">
-            <strong>Copyright &copy; 2021 <a href="/">GKE Haleluya Nanga Bulik</a>.</strong>
+        <footer class="main-footer">
+            <strong>Copyright &copy; 2021 <a href="/">Dinas Kebudayaan dan Pariwisata Kota Salatiga</a>.</strong>
         </footer>
 
         <!-- Control Sidebar -->
