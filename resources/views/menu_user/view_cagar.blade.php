@@ -505,14 +505,47 @@
                     </div>
 
                     <div class="form-group row mb-0">
-                        <div class="text-md-right col-md-8 offset-md-2">
+                        <div class="text-md-left col-md-6 offset-md-2">
                             <input type="submit" class="btn btn-success" value="Simpan">
+                        </div>
+
+                        <div class="col-md-2 text-right">
+                            <a href="" class="btn btn-danger btn-md" data-toggle="modal" data-target="#deleteModal"
+                                role="button" aria-disabled="true">Hapus</a>
                         </div>
                     </div>
                 </div>
             </div>
 
         </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus Data?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Hapus {{$data->nama}} ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+
+                    <form method="GET" action="/cagar/delete/{{$data->id}}">
+                        @csrf
+                        <button href="/cagar/delete/{{$data->id}}" onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="btn btn-danger">Hapus</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 

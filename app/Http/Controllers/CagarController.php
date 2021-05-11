@@ -10,6 +10,7 @@ use App\Models\CagarPemilik;
 use App\Models\CagarPenetapan;
 use App\Models\CagarPenilaian;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 
 class CagarController extends Controller
 {
@@ -184,6 +185,28 @@ class CagarController extends Controller
     
     public function destroy($id)
     {
-        //
+        $data_identitas = CagarIdentitas::find($id);
+        // dd($data_identitas->url_gambar);
+        $data_deskripsi = CagarDeskripsi::where('cb_identitas_id', '=', $id)->first();
+        $data_pemilik   = CagarPemilik::where('cb_identitas_id', '=', $id)->first();
+        $data_penetapan = CagarPenetapan::where('cb_identitas_id', '=', $id)->first();
+        $data_penilaian = CagarPenilaian::where('cb_identitas_id', '=', $id)->first();
+
+        if (!$data_identitas) {
+            return redirect('/cagar')->with('error', 'Terjadi kesalahan! Data tidak terhapus!');
+        }
+        
+        $path = public_path().$data_identitas->url_gambar;
+        unlink($path);
+
+        File::delete($path);
+        
+        $data_identitas->delete();
+        $data_deskripsi->delete();
+        $data_pemilik  ->delete();
+        $data_penetapan->delete();
+        $data_penilaian->delete();
+
+        return redirect('/cagar')->with('success', 'Data terhapus!');
     }
 }
