@@ -39,7 +39,7 @@ Route::middleware('role:user')->get('cagar', 'App\Http\Controllers\CagarControll
 Route::middleware('role:user')->get('cagar/create', 'App\Http\Controllers\CagarController@create')->name('create_cagar');
 Route::middleware('role:user')->post('cagar/store', 'App\Http\Controllers\CagarController@store')->name('store_cagar');
 Route::middleware('role:user')->get('cagar/{id}', 'App\Http\Controllers\CagarController@show')->name('show_cagar');
-Route::middleware('role:user')->post('cagar/update', 'App\Http\Controllers\CagarController@update')->name('update_cagar');
+Route::middleware('role:user')->post('cagar/update/{id}', 'App\Http\Controllers\CagarController@update')->name('update_cagar');
 
 ////////////////////////////////////////////////////////
 

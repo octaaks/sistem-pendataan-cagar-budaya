@@ -9,6 +9,7 @@ use App\Models\CagarDeskripsi;
 use App\Models\CagarPemilik;
 use App\Models\CagarPenetapan;
 use App\Models\CagarPenilaian;
+use Illuminate\Support\Facades\DB;
 
 class CagarController extends Controller
 {
@@ -35,12 +36,26 @@ class CagarController extends Controller
             'alamat' => 'required',
         ]);
 
+        // menyimpan data file yang diupload ke variabel $file
+        $file = $request->file('url_gambar');
+        $nama_file = time()."_".$file->getClientOriginalName();
+
+        // isi dengan nama folder tempat kemana file diupload
+        $tujuan_upload = 'res/img/cb';
+        $file->move($tujuan_upload, $nama_file);
+        
         $identitas = new CagarIdentitas;
         $identitas -> nama           = $request-> nama         ;
         $identitas -> no_sertifikat  = $request-> no_sertifikat;
         $identitas -> nop_pbb        = $request-> nop_pbb      ;
         $identitas -> alamat         = $request-> alamat       ;
-        $identitas -> url_gambar     = $request-> url_gambar   ;
+
+        if ($request->url_gambar) {
+            $identitas -> url_gambar     = "/".$tujuan_upload.'/'.$nama_file;
+        } else {
+            $identitas -> url_gambar     = "/".$tujuan_upload.'/'.'default.png';
+        }
+        
         $identitas -> luas           = $request-> luas         ;
         $identitas -> batas          = $request-> batas        ;
         $identitas -> koordinat      = $request-> koordinat    ;
@@ -98,7 +113,73 @@ class CagarController extends Controller
     
     public function update(Request $request, $id)
     {
-        //
+        $param = $request->all();
+        
+        $data_identitas = [
+            'nama'          => $param['nama'],
+            'no_sertifikat' => $param['no_sertifikat'],
+            'nop_pbb'       => $param['nop_pbb'],
+            'alamat'        => $param['alamat'],
+            // 'url_gambar                 ' => $param['url_gambar'],
+            'luas'          => $param['luas'],
+            'batas'         => $param['batas'],
+            'koordinat'     => $param['koordinat'],
+            
+        ];
+        $data_deskripsi = [
+            'deskripsi'                 => $param['deskripsi'],
+            'latar_belakang_sejarah'    => $param['latar_belakang_sejarah'],
+            'riwayat_penanganan'        => $param['riwayat_penanganan'],
+            'status_hukum'              => $param['status_hukum'],
+            'kepemilikan'               => $param['kepemilikan'],
+            'kondisi'                   => $param['kondisi'],
+
+        ];
+        $data_pemilik = [
+            'nama'      => $param['nama_pemilik'],
+            'nik'       => $param['nik'],
+            'no_hp'     => $param['no_hp'],
+            'email'     => $param['email'],
+            'alamat'    => $param['alamat_pemilik'],
+
+        ];
+        $data_penetapan = [
+            'latar_belakang_penetapan'  => $param['latar_belakang_penetapan'],
+            'hasil_verifikasi'          => $param['hasil_verifikasi'],
+
+        ];
+        $data_penilaian = [
+            'nilai_penting'         => $param['nilai_penting'],
+            'dasar_rekomendasi'     => $param['dasar_rekomendasi'],
+            'penjelasan_tambahan'   => $param['penjelasan_tambahan']
+        ];
+
+        $file = $request->file('url_gambar');
+
+        // Kalo pas diedit gambar diganti / masukin gambar
+        if ($file) {
+            // menyimpan data file yang diupload ke variabel $file
+            $nama_file = time()."_".$file->getClientOriginalName();
+
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'res/img/cb';
+            $file->move($tujuan_upload, $nama_file);
+            
+            $data_identitas['url_gambar'] = "/".$tujuan_upload."/".$nama_file; // Update field photo
+        }
+
+        try {
+            DB::table('cb_identitas')   -> where('id', '=', $id) -> update($data_identitas);
+            DB::table('cb_deskripsi')   -> where('cb_identitas_id', '=', $id) -> update($data_deskripsi);
+            DB::table('cb_pemilik')     -> where('cb_identitas_id', '=', $id) -> update($data_pemilik);
+            DB::table('cb_penetapan')   -> where('cb_identitas_id', '=', $id) -> update($data_penetapan);
+            DB::table('cb_penilaian')   -> where('cb_identitas_id', '=', $id) -> update($data_penilaian);
+                        
+            return redirect('/cagar')->with('success', 'Data tersimpan!');
+        } catch (\Exception $e) {
+            // dd($e);
+            return redirect('/cagar')->with('error', 'Terjadi kesalahan! Data tidak tersimpan!');
+        }
     }
     
     public function destroy($id)

@@ -145,14 +145,17 @@
                         </div>
                     </div>
 
+
+
                     <div class="form-group row">
                         <label for="url_gambar" class="col-md-2 col-form-label text-md-left">URL Gambar</label>
 
                         <div class="col-md-8">
-                            <input id="url_gambar" type="text"
+                            <input id="imgInp" type="file"
                                 class="form-control @error('url_gambar') is-invalid @enderror" name="url_gambar"
                                 value="" autofocus>
 
+                            <img class="image-preview mt-2" id="blah" src="/res/img/cb/default.png" alt="your image" />
                             @error('url_gambar')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -514,4 +517,22 @@
     </div>
 </body>
 
+<script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }}"></script>
+<script>
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function(e) {
+            $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function() {
+    readURL(this);
+});
+</script>
 @endsection

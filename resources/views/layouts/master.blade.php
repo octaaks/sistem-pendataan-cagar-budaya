@@ -29,6 +29,8 @@
     <!-- summernote -->
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/summernote/summernote-bs4.min.css') }}">
     <link rel="icon" type="image/jpg" href="/res/img/logo_salatiga.png" />
+    <!-- //custom -->
+    <link rel="stylesheet" href="/css/custom-admin.css">
 
 </head>
 
