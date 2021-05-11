@@ -30,19 +30,31 @@
 @endif
 <!-- /.card-header -->
 <div class="card">
+
+    <div style="margin:10px" class="row">
+        <div class="col-md-auto">
+            <a href="user/create" class="btn btn-primary btn-md" role="button" aria-disabled="true"><i
+                    class="fas fa-plus"></i> Tambah User</a>
+        </div>
+    </div>
     <!-- /.card-header -->
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kepala Keluarga</th>
                     <th>Nama</th>
-                    <th>Tgl Lahir</th>
+                    <th>Peran</th>
                 </tr>
             </thead>
             <tbody>
-
+                @foreach($data as $index => $item)
+                <tr>
+                    <td>{{ $index +1 }}</td>
+                    <td><a href="cagar/{{$item -> id}}">{{ $item->name}}</a></td>
+                    <td>{{$item->Roles()->first()->name}}</td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -76,7 +88,7 @@ jQuery(document).ready(function($) {
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 });
 </script>
