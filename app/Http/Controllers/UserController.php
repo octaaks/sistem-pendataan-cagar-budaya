@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -58,7 +59,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = User::find($id);
+        return view('menu_admin.view_user', ['data'=>$data]);
     }
 
     /**
@@ -81,7 +83,23 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $param = $request->all();
+        
+        $data_user = [
+            'name' => $param['name'],
+            'email' => $param['email'],
+            'nip' => $param['nip'],
+            'no_hp' => $param['no_hp'],
+        ];
+
+        try {
+            DB::table('users') -> where('id', '=', $id) -> update($data_user);
+                        
+            return redirect('/user')->with('success', 'Data akun tersimpan!');
+        } catch (\Exception $e) {
+            // dd($e);
+            return redirect('/user')->with('error', 'Terjadi kesalahan! Data akun tidak tersimpan!');
+        }
     }
 
     /**
@@ -92,6 +110,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect('/user')->with('success', 'Akun berhasil dihapus!');
     }
 }

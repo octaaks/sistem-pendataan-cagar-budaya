@@ -51,7 +51,7 @@
                 @foreach($data as $index => $item)
                 <tr>
                     <td>{{ $index +1 }}</td>
-                    <td><a href="cagar/{{$item -> id}}">{{ $item->name}}</a></td>
+                    <td><a href="user/{{$item -> id}}">{{ $item->name}}</a></td>
                     <td>{{$item->Roles()->first()->name}}</td>
                 </tr>
                 @endforeach

@@ -22,9 +22,6 @@ Route::get('/', function () {
 });
 
 //ROLE ADMIN
-Route::middleware('role:admin')->get('history', function () {
-    return view('menu_admin.history');
-})->name('history');
 
 Route::middleware('role:admin')->get('backup', function () {
     return view('menu_admin.backup');
@@ -47,6 +44,8 @@ Route::middleware('role:admin')->post('user/store', 'UserController@store')->nam
 Route::middleware('role:admin')->get('user/{id}', 'UserController@show')->name('show_user');
 Route::middleware('role:admin')->post('user/update/{id}', 'UserController@update')->name('update_user');
 Route::middleware('role:admin')->get('user/delete/{id}', 'UserController@destroy')->name('delete_user');
+
+Route::middleware('role:admin')->get('history', 'HistoryController@index')->name('history');
 
 ////////////////////////////////////////////////////////
 

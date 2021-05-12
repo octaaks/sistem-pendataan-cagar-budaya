@@ -36,13 +36,20 @@
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Kepala Keluarga</th>
                     <th>Nama</th>
-                    <th>Tgl Lahir</th>
+                    <th>Waktu</th>
+                    <th>Aktivitas</th>
                 </tr>
             </thead>
             <tbody>
-
+                @foreach($data as $index => $item)
+                <tr>
+                    <td>{{ $index +1 }}</td>
+                    <td>{{ $item->user->name}}</td>
+                    <td>{{ $item-> created_at}}</td>
+                    <td>{{ $item-> aktivitas}}</td>
+                </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -76,7 +83,7 @@ jQuery(document).ready(function($) {
         "responsive": true,
         "lengthChange": false,
         "autoWidth": false,
-        "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+        "buttons": ["excel", "pdf", "print"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 });
 </script>

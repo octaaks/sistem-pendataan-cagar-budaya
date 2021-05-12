@@ -9,6 +9,9 @@ use App\Models\CagarDeskripsi;
 use App\Models\CagarPemilik;
 use App\Models\CagarPenetapan;
 use App\Models\CagarPenilaian;
+use App\Models\History;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
 
@@ -98,6 +101,13 @@ class CagarController extends Controller
         $penilaian->identitas()->associate($identitas);
         $penilaian -> save();
 
+        //log data
+        $userId = Auth::id();
+        $history = new History;
+        $history -> aktivitas = 'Input data ['. $request-> nama .']';
+        $history -> user() ->associate($userId);
+        $history -> save();
+        
         return redirect('/cagar')->with('success', 'Data tersimpan!');
     }
     
@@ -167,8 +177,22 @@ class CagarController extends Controller
             $file->move($tujuan_upload, $nama_file);
             
             $data_identitas['url_gambar'] = "/".$tujuan_upload."/".$nama_file; // Update field photo
+            
+            //delete previous image file
+            $old_data_identitas = CagarIdentitas::find($id);
+            $path = public_path().$old_data_identitas->url_gambar;
+            unlink($path);
+
+            File::delete($path);
         }
 
+        //log data
+        $userId = Auth::id();
+        $history = new History;
+        $history -> aktivitas = 'Update data ['. $data_identitas['nama'] .']';
+        $history -> user() ->associate($userId);
+        $history -> save();
+        
         try {
             DB::table('cb_identitas')   -> where('id', '=', $id) -> update($data_identitas);
             DB::table('cb_deskripsi')   -> where('cb_identitas_id', '=', $id) -> update($data_deskripsi);
@@ -206,6 +230,13 @@ class CagarController extends Controller
         $data_pemilik  ->delete();
         $data_penetapan->delete();
         $data_penilaian->delete();
+
+        //log data
+        $userId = Auth::id();
+        $history = new History;
+        $history -> aktivitas = 'Hapus data ['. $data_identitas->nama .']';
+        $history -> user() ->associate($userId);
+        $history -> save();
 
         return redirect('/cagar')->with('success', 'Data terhapus!');
     }
