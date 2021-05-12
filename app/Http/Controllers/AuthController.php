@@ -9,7 +9,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('login');
+        return view('auth.login');
     }
     public function proses_login(Request $request)
     {
@@ -21,6 +21,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
+            
             if ($user->hasRole('admin')) {
                 return redirect('history');
             } elseif ($user->hasRole('user')) {
@@ -29,6 +30,18 @@ class AuthController extends Controller
             return redirect('/');
         }
         return redirect('login')->withSuccess('Oppes! Silahkan Cek Inputanmu');
+    }
+
+    public function dashboard()
+    {
+        $user = Auth::user();
+            
+        if ($user->hasRole('admin')) {
+            return redirect('history');
+        } elseif ($user->hasRole('user')) {
+            return redirect('cagar');
+        }
+        return redirect('/');
     }
     
     public function logout(Request $request)

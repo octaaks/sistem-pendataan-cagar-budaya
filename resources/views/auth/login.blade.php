@@ -1,7 +1,8 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+            <!-- <x-jet-authentication-card-logo /> -->
+            <img src="{{ asset('res/img/logo_salatiga.png')}}" style="height:100px" alt="Disbudpar Salatiga">
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />

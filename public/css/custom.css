@@ -52,9 +52,9 @@ html {
     margin-left: 60px;
 }
 
-.title {
-    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.51), -4px 4px 4px rgba(0, 0, 0, 0.47);
+.title {text-shadow: -1px -1px 1px rgba(255,255,255,.1), 1px 1px 1px rgba(0,0,0,.5), 2px 5px 10px #000000;
     font-family: 'Roboto', sans-serif;
+    font-weight: 700;
     /* -webkit-text-stroke: 1px black; */
 }
 
@@ -69,5 +69,5 @@ html {
 .button-home:hover{
     background-color: rgb(29, 69, 102);
     color: azure;
-    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2), -4px 4px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2), 9px 4px 4px rgba(0, 0, 0, 0.2);
 }

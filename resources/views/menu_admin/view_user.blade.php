@@ -121,7 +121,8 @@
 
                         <div class="col-md-8">
                             <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{$data->email}}" autofocus>
+                                name="email" value="{{$data->email}}" autofocus autocomplete="off" autocorrect="off"
+                                autocapitalize="off" spellcheck="false">
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">

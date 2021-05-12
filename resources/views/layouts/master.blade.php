@@ -207,6 +207,15 @@
                         </li>
 
                         @endrole
+
+                        <li class="nav-item">
+                            <a href="{{ route('profile.show') }}" class="nav-link ">
+                                <i class="nav-icon fas fa-user-circle"></i>
+                                <p>
+                                    Profil Saya
+                                </p>
+                            </a>
+                        </li>
                     </ul>
                 </nav>
                 <!-- /.sidebar-menu -->

@@ -35,7 +35,11 @@
             <div class="row mt-5">
                 <div class="col-lg-12">
                     <form action="{{ route('login') }}">
+                        @auth
+                        <button class="btn button-home">Dashboard</button>
+                        @else
                         <button class="btn button-home">Login</button>
+                        @endauth
                     </form>
                 </div>
             </div>

@@ -53,9 +53,7 @@ Route::middleware('role:admin')->get('history', 'HistoryController@index')->name
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('menu_user.dashboard');
-})->name('dashboard');
+Route::get('/dashboard', 'AuthController@dashboard')->name('dashboard');
 
 // Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 //     return view('dashboard');
