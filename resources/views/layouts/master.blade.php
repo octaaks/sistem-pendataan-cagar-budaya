@@ -147,6 +147,15 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="/report" class="nav-link ">
+                                <i class="nav-icon fas fa-chart-area"></i>
+                                <p>
+                                    Rekap Data
+                                    <!-- <span class="badge badge-info right">2</span> -->
+                                </p>
+                            </a>
+                        </li>
 
                         <!-- <li class="nav-item">
                             <a href="/admin/pernikahan" class="nav-link ">

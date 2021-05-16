@@ -39,14 +39,6 @@ class CagarController extends Controller
             'nama' => 'required',
             'alamat' => 'required',
         ]);
-
-        // menyimpan data file yang diupload ke variabel $file
-        $file = $request->file('url_gambar');
-        $nama_file = time()."_".$file->getClientOriginalName();
-
-        // isi dengan nama folder tempat kemana file diupload
-        $tujuan_upload = 'res/img/cb';
-        $file->move($tujuan_upload, $nama_file);
         
         $identitas = new CagarIdentitas;
         $identitas -> nama           = $request-> nama         ;
@@ -55,9 +47,26 @@ class CagarController extends Controller
         $identitas -> alamat         = $request-> alamat       ;
 
         if ($request->url_gambar) {
+            
+            // menyimpan data file yang diupload ke variabel $file
+            $file = $request->file('url_gambar');
+            dd($file);
+            $nama_file = time()."_".$file->getClientOriginalName();
+    
+            // isi dengan nama folder tempat kemana file diupload
+            $tujuan_upload = 'res/img/cb';
+            $file->move($tujuan_upload, $nama_file);
+            
             $identitas -> url_gambar     = "/".$tujuan_upload.'/'.$nama_file;
         } else {
-            $identitas -> url_gambar     = "/".$tujuan_upload.'/'.'default.png';
+            $tujuan_upload = 'res/img/cb';
+            
+            $file = $tujuan_upload.'/'."default.png";
+            $full_url =$tujuan_upload.'/'.time()."_default.png";
+
+            File::copy(public_path($file), public_path($full_url));
+            
+            $identitas -> url_gambar     = "/".$full_url;
         }
         
         $identitas -> luas           = $request-> luas         ;
@@ -221,10 +230,12 @@ class CagarController extends Controller
         }
         
         $path = public_path().$data_identitas->url_gambar;
-        unlink($path);
-
-        File::delete($path);
         
+        if (file_exists($path)) {
+            unlink($path);
+            File::delete($path);
+        }
+
         $data_identitas->delete();
         $data_deskripsi->delete();
         $data_pemilik  ->delete();

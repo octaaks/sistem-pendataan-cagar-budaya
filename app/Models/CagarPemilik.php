@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CagarPemilik extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     
     protected $table = "cb_pemilik";
     
@@ -18,6 +20,8 @@ class CagarPemilik extends Model
         'email',
         'alamat',
     ];
+    
+    protected $dates = ['deleted_at'];
     
     public function identitas()
     {

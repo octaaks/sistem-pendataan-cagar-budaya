@@ -17,14 +17,15 @@ class CreateCbIdentitasTable extends Migration
             $table->increments('id');
 
             $table->string('nama');
-            $table->string('no_sertifikat')->unique();
-            $table->string('nop_pbb')->unique();
+            $table->string('no_sertifikat');
+            $table->string('nop_pbb');
             $table->string('alamat');
             $table->string('url_gambar');
             $table->string('luas');
             $table->string('batas');
             $table->string('koordinat');
             
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -25,6 +25,7 @@ class CreateCbDeskripsiTable extends Migration
             $table->string('kondisi');
 
             $table->timestamps();
+            $table->softDeletes();
                     
             $table->foreign('cb_identitas_id')->references('id')->on('cb_identitas')
                 ->onDelete('cascade');

@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CagarPenilaian extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     
     protected $table = "cb_penilaian";
     
@@ -16,6 +18,8 @@ class CagarPenilaian extends Model
         'dasar_rekomendasi',
         'penjelasan_tambahan',
     ];
+    
+    protected $dates = ['deleted_at'];
     
     public function identitas()
     {

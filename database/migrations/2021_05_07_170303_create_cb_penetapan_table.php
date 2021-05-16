@@ -21,6 +21,7 @@ class CreateCbPenetapanTable extends Migration
             $table->string('hasil_verifikasi');
 
             $table->timestamps();
+            $table->softDeletes();
                     
             $table->foreign('cb_identitas_id')->references('id')->on('cb_identitas')
                 ->onDelete('cascade');

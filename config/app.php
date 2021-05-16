@@ -178,6 +178,8 @@ return [
         App\Providers\JetstreamServiceProvider::class,
         // ...permission
         Spatie\Permission\PermissionServiceProvider::class,
+        //backup
+        // Spatie\Backup\BackupServiceProvider::class,
 
     ],
 

@@ -444,7 +444,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <!-- <div class="form-group row">
                         <label for="hasil_verifikasi" class="col-md-2 col-form-label text-md-left">Hasil
                             Verifikasi</label>
 
@@ -453,6 +453,24 @@
                                 class="form-control @error('hasil_verifikasi') is-invalid @enderror"
                                 name="hasil_verifikasi" value="" autofocus>
 
+                            @error('hasil_verifikasi')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
+                    </div> -->
+
+                    <div class="form-group row">
+                        <label for="hasil_verifikasi" class="col-md-2 col-form-label text-md-left">Hasil
+                            Verifikasi</label>
+
+                        <div class="col-md-8">
+                            <select name="hasil_verifikasi" id="hasil_verifikasi" class="form-control">
+                                <option value="Belum Terverifikasi" selected>Belum Terverifikasi</option>
+                                <option value="Diterima">Diterima</option>
+                                <option value="Ditolak">Ditolak</option>
+                            </select>
                             @error('hasil_verifikasi')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

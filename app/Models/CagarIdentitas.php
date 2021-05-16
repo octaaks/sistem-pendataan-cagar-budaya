@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CagarIdentitas extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     
     protected $table = "cb_identitas";
     
@@ -21,6 +23,8 @@ class CagarIdentitas extends Model
         'batas',
         'koordinat',
     ];
+    
+    protected $dates = ['deleted_at'];
     
     public function deskripsi()
     {

@@ -1,5 +1,5 @@
 @extends('layouts/master')
-@section('title', 'Data Cagar Budaya')
+@section('title', 'Rekap Data Cagar Budaya')
 @section('content')
 
 
@@ -32,38 +32,29 @@
 <div class="card">
     <!-- /.card-header -->
 
-    <div style="margin:10px" class="row">
-        <div class="col-md-auto">
-            <a href="cagar/create" class="btn btn-primary btn-md" role="button" aria-disabled="true"><i
-                    class="fas fa-plus"></i> Tambah Data</a>
-        </div>
-    </div>
     <div class="card-body">
         <table id="example1" class="table table-bordered table-striped">
-            <thead>
-                <tr>
-                    <th>No</th>
-                    <th>Nama Cagar Budaya</th>
-                    <th>Alamat</th>
-                    <th>Status Verifikasi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($data as $index => $item)
-                <tr>
-                    <td>{{ $index +1 }}</td>
-                    <td><a href="cagar/{{$item -> id}}">{{ $item-> nama}}</a></td>
-                    <td>{{ $item-> alamat}}</td>
-                    <td>{{ $item-> penetapan -> hasil_verifikasi}}</td>
-                </tr>
-                @endforeach
-            </tbody>
+            <tr>
+                <th>Jumlah Cagar Budaya</th>
+                <td>{{$semua}}</td>
+            </tr>
+            <tr>
+                <th>Jumlah Cagar Budaya (Sudah Ditetapkan)</th>
+                <td>{{$terverifikasi}}</td>
+            </tr>
+            <tr>
+                <th>Jumlah Cagar Budaya (Belum Ditetapkan)</th>
+                <td>{{$tidak_terverifikasi}}</td>
+            </tr>
+            <tr>
+                <th>Jumlah Cagar Budaya Dihapus</th>
+                <td>{{$deleted}}</td>
+            </tr>
         </table>
     </div>
     <!-- /.card-body -->
 </div>
 <!-- /.card-body -->
-
 
 <!-- jQuery -->
 <script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }}"></script>
