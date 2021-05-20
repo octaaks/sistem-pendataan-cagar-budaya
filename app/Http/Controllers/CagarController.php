@@ -50,7 +50,7 @@ class CagarController extends Controller
             
             // menyimpan data file yang diupload ke variabel $file
             $file = $request->file('url_gambar');
-            dd($file);
+            // dd($file);
             $nama_file = time()."_".$file->getClientOriginalName();
     
             // isi dengan nama folder tempat kemana file diupload
@@ -114,7 +114,7 @@ class CagarController extends Controller
         $userId = Auth::id();
         $history = new History;
         $history -> aktivitas = 'Input data ['. $request-> nama .']';
-        $history -> user() ->associate($userId);
+        $history -> nama = Auth::user()-> name;
         $history -> save();
         
         return redirect('/cagar')->with('success', 'Data tersimpan!');
@@ -199,7 +199,7 @@ class CagarController extends Controller
         $userId = Auth::id();
         $history = new History;
         $history -> aktivitas = 'Update data ['. $data_identitas['nama'] .']';
-        $history -> user() ->associate($userId);
+        $history -> nama = Auth::user()-> name;
         $history -> save();
         
         try {
@@ -246,7 +246,7 @@ class CagarController extends Controller
         $userId = Auth::id();
         $history = new History;
         $history -> aktivitas = 'Hapus data ['. $data_identitas->nama .']';
-        $history -> user() ->associate($userId);
+        $history -> nama = Auth::user()-> name;
         $history -> save();
 
         return redirect('/cagar')->with('success', 'Data terhapus!');

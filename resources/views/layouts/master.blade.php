@@ -147,12 +147,12 @@
                                 </p>
                             </a>
                         </li>
+
                         <li class="nav-item">
                             <a href="/report" class="nav-link ">
                                 <i class="nav-icon fas fa-chart-area"></i>
                                 <p>
                                     Rekap Data
-                                    <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
                         </li>
@@ -195,21 +195,20 @@
                             </a>
                         </li>
 
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="/backup" class="nav-link ">
                                 <i class="nav-icon fas fa-file-export"></i>
                                 <p>
                                     Backup Data
-                                    <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>
-                        </li>
+                        </li> -->
 
                         <li class="nav-item">
                             <a href="/user" class="nav-link ">
                                 <i class="nav-icon fas fa-user-friends"></i>
                                 <p>
-                                    Pengguna
+                                    Kelola Pengguna
                                     <!-- <span class="badge badge-info right">2</span> -->
                                 </p>
                             </a>

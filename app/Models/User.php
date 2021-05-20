@@ -10,6 +10,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
@@ -20,6 +21,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
     use HasRoles;
+    use SoftDeletes;
     
     /**
      * The attributes that are mass assignable.
@@ -34,6 +36,7 @@ class User extends Authenticatable
         'no_hp',
     ];
 
+    protected $dates = ['deleted_at'];
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -64,8 +67,8 @@ class User extends Authenticatable
         'profile_photo_url',
     ];
 
-    public function history()
-    {
-        return $this->hasMany('App\Models\History');
-    }
+    // public function history()
+    // {
+    //     return $this->hasMany('App\Models\History');
+    // }
 }

@@ -16,13 +16,14 @@ class CreateHistoriesTable extends Migration
         Schema::create('histories', function (Blueprint $table) {
             $table->bigIncrements('id');
             
-            $table->unsignedBigInteger('user_id');
+            // $table->unsignedBigInteger('user_id');
+            $table->string('nama');
             $table->string('aktivitas');
 
             $table->timestamps();
             
-            $table->foreign('user_id')->references('id')->on('users')
-                ->onDelete('cascade');
+            // $table->foreign('user_id')->references('id')->on('users')
+            //     ->onDelete('cascade');
         });
     }
 

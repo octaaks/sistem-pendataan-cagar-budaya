@@ -11,11 +11,12 @@ class History extends Model
     
     protected $table = "histories";
     protected $fillable = [
+        'nama',
         'aktivitas'
     ];
     
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User', 'user_id');
-    }
+    // public function user()
+    // {
+    //     return $this->belongsTo('App\Models\User', 'user_id');
+    // }
 }

@@ -29,7 +29,7 @@ class AuthController extends Controller
             }
             return redirect('/');
         }
-        return redirect('login')->withSuccess('Oppes! Silahkan Cek Inputanmu');
+        return redirect('login')->with('error', 'Login gagal! Silahkan periksa email dan password anda!');
     }
 
     public function dashboard()

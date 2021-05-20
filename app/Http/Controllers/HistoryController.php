@@ -11,7 +11,7 @@ class HistoryController extends Controller
     {
         $data = History::select(
             'created_at',
-            'user_id',
+            'nama',
             'aktivitas'
         )->orderBy('created_at', 'DESC')->get();
         return view('menu_admin.history', ['data'=>$data]);

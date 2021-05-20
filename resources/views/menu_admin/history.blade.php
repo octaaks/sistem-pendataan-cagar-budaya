@@ -45,7 +45,7 @@
                 @foreach($data as $index => $item)
                 <tr>
                     <td>{{ $index +1 }}</td>
-                    <td>{{ $item->user->name}}</td>
+                    <td>{{ $item->nama}}</td>
                     <td>{{ $item-> created_at}}</td>
                     <td>{{ $item-> aktivitas}}</td>
                 </tr>
