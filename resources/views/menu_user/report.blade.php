@@ -49,8 +49,8 @@
                 <td>{{$tidak_terverifikasi}}</td>
             </tr>
             <tr>
-                <th>Jumlah Cagar Budaya Dihapus</th>
-                <td>{{$deleted}}</td>
+                <th style="color:#aa0000">Jumlah Cagar Budaya Dihapus</th>
+                <td style="color:#aa0000">{{$deleted}}</td>
             </tr>
         </table>
     </div>
