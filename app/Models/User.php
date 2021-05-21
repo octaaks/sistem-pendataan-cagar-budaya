@@ -21,7 +21,7 @@ class User extends Authenticatable
     use TwoFactorAuthenticatable;
 
     use HasRoles;
-    use SoftDeletes;
+    // use SoftDeletes;
     
     /**
      * The attributes that are mass assignable.
@@ -36,7 +36,8 @@ class User extends Authenticatable
         'no_hp',
     ];
 
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
+    
     /**
      * The attributes that should be hidden for arrays.
      *

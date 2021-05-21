@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('admin-lte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
+
 </head>
 
 @if(session('success'))
@@ -28,8 +29,9 @@
     {{session('error')}}
 </div>
 @endif
-<!-- /.card-header -->
-<div class="card">
+<div class="row">
+<div class="col-lg-6">
+<div class="card" style="height: 320px;">
     <!-- /.card-header -->
 
     <div class="card-body">
@@ -54,7 +56,16 @@
     </div>
     <!-- /.card-body -->
 </div>
-<!-- /.card-body -->
+</div>
+
+<div class="col-lg-6">
+<div id="chartHolder" class="card" style="height: 320px;">
+    <div class="card-body">
+        <div id="piechart" style="height: 100%;"></div>
+    </div>
+</div>
+</div>
+</div>
 
 <!-- jQuery -->
 <script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }}"></script>
@@ -73,8 +84,42 @@
 <script src="{{ asset('admin-lte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
 <script src="{{ asset('admin-lte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('admin-lte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <!-- Page specific script -->
 <script>
+
+var x = {!!json_encode($terverifikasi)!!};
+var y = {!!json_encode($tidak_terverifikasi)!!};
+
+google.charts.load('current', {
+    'packages': ['corechart']
+});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    var chartHolder = document.getElementById("chartHolder");
+
+    var data = google.visualization.arrayToDataTable([
+        ['Task', 'Hours per Day'],
+        ['Terverifikasi', parseInt(x)],
+        ['Tidak Terverifikasi', parseInt(y)]
+    ]);
+
+    var options = {
+        title: 'Jumlah Cagar Budaya Kota Salatiga'
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+    
+    if(x>0||y>0){
+        chart.draw(data, options);
+        chartHolder.style.display = "block";
+    }else{
+        chartHolder.style.display = "none";
+    }
+}
+
 jQuery(document).ready(function($) {
     /* now you can use $ */
     $("#example1").DataTable({
