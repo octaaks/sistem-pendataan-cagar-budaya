@@ -1,3 +1,27 @@
+<h3>Cara Install</h3>
+<ol>
+<li>Clone atau download source code
+<ul>
+<li>Pada terminal, clone repo : <code></code><code>git clone https://github.com/octaaks/sistem-pendataan-cagar-budaya.git</code><code></code></li>
+<li>Jika tidak menggunakan Git, silakan&nbsp;<strong>Download Zip</strong>&nbsp;dan&nbsp;<em>extract</em>&nbsp;pada direktori web server (misal: xampp/htdocs)</li>
+</ul>
+</li>
+<li><code>cd sistem-pendataan-cagar-budaya</code></li>
+<li><code>composer install</code></li>
+<li><code>cp .env.example .env</code>
+<ul>
+<li>Jika tidak menggunakan Git, bisa rename file&nbsp;<code>.env.example</code>&nbsp;menjadi&nbsp;<code>.env</code></li>
+</ul>
+</li>
+<li>Pada terminal&nbsp;<code>php artisan key:generate</code></li>
+<li>Buat&nbsp;<strong>database pada mysql</strong>&nbsp;untuk aplikasi ini</li>
+<li><strong>Setting database</strong>&nbsp;pada file&nbsp;<code>.env</code><code>
+</code></li>
+<li><code>php artisan migrate --seed</code></li>
+<li><code>php artisan serve</code></li>
+<li>Selesai</li>
+</ol>
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
