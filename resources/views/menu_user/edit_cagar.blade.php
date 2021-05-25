@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', 'Tambah Data Cagar Budaya')
+@section('title', 'Edit Data Cagar Budaya')
 @section('content')
 
 <head>
@@ -32,7 +32,7 @@
     @endif
     <div class="container">
 
-        <form action="{{ route("store_cagar") }}" method="post" enctype="multipart/form-data">
+        <form action="/cagar/update/{{$data->id}}" method="post" enctype="multipart/form-data">
             @csrf
 
             <!-- //identitas -->
@@ -46,7 +46,7 @@
 
                         <div class="col-md-8">
                             <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror"
-                                name="nama" value="" autofocus>
+                                name="nama" value="{{$data->nama}}" autofocus>
 
                             @error('nama')
                             <span class="invalid-feedback" role="alert">
@@ -62,7 +62,7 @@
                         <div class="col-md-8">
                             <input id="no_sertifikat" type="text"
                                 class="form-control @error('no_sertifikat') is-invalid @enderror" name="no_sertifikat"
-                                value="" autofocus>
+                                value="{{$data->no_sertifikat}}" autofocus>
 
                             @error('no_sertifikat')
                             <span class="invalid-feedback" role="alert">
@@ -77,7 +77,7 @@
 
                         <div class="col-md-8">
                             <input id="nop_pbb" type="text" class="form-control @error('nop_pbb') is-invalid @enderror"
-                                name="nop_pbb" value="" autofocus>
+                                name="nop_pbb" value="{{$data->nop_pbb}}" autofocus>
 
                             @error('nop_pbb')
                             <span class="invalid-feedback" role="alert">
@@ -92,7 +92,7 @@
 
                         <div class="col-md-8">
                             <textarea id="alamat" type="text" class="form-control @error('alamat') is-invalid @enderror"
-                                name="alamat" aria-label="With textarea" rows="3" autofocus></textarea>
+                                name="alamat" aria-label="With textarea" rows="3" autofocus>{{$data->alamat}}</textarea>
                             @error('alamat')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -101,17 +101,15 @@
                         </div>
                     </div>
 
-
-
                     <div class="form-group row">
                         <label for="url_gambar" class="col-md-2 col-form-label text-md-left">URL Gambar</label>
 
                         <div class="col-md-8">
                             <input id="imgInp" type="file"
                                 class="form-control @error('url_gambar') is-invalid @enderror" name="url_gambar"
-                                value="" autofocus>
+                                value="{{$data->url_gambar}}" autofocus>
 
-                            <img class="image-preview mt-2" id="blah" src="/res/img/cb/default.png" alt="your image" />
+                            <img class="image-preview mt-2" id="blah" src="{{$data->url_gambar}}" alt="your image" />
                             @error('url_gambar')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -125,7 +123,7 @@
 
                         <div class="col-md-8">
                             <input id="luas" type="text" class="form-control @error('luas') is-invalid @enderror"
-                                name="luas" value="" autofocus>
+                                name="luas" value="{{$data->luas}}" autofocus>
 
                             @error('luas')
                             <span class="invalid-feedback" role="alert">
@@ -140,7 +138,7 @@
 
                         <div class="col-md-8">
                             <input id="batas" type="text" class="form-control @error('batas') is-invalid @enderror"
-                                name="batas" value="" autofocus>
+                                name="batas" value="{{$data->batas}}" autofocus>
 
                             @error('batas')
                             <span class="invalid-feedback" role="alert">
@@ -155,8 +153,8 @@
 
                         <div class="col-md-8">
                             <input id="koordinat" type="text"
-                                class="form-control @error('koordinat') is-invalid @enderror" name="koordinat" value=""
-                                autofocus>
+                                class="form-control @error('koordinat') is-invalid @enderror" name="koordinat"
+                                value="{{$data->koordinat}}" autofocus>
 
                             @error('koordinat')
                             <span class="invalid-feedback" role="alert">
@@ -179,8 +177,8 @@
 
                         <div class="col-md-8">
                             <input id="deskripsi" type="text"
-                                class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi" value=""
-                                autofocus>
+                                class="form-control @error('deskripsi') is-invalid @enderror" name="deskripsi"
+                                value="{{$data->deskripsi->deskripsi}}" autofocus>
 
                             @error('deskripsi')
                             <span class="invalid-feedback" role="alert">
@@ -197,7 +195,8 @@
                         <div class="col-md-8">
                             <textarea id="latar_belakang_sejarah" type="text"
                                 class="form-control @error('latar_belakang_sejarah') is-invalid @enderror"
-                                name="latar_belakang_sejarah" aria-label="With textarea" rows="3" autofocus></textarea>
+                                name="latar_belakang_sejarah" aria-label="With textarea" rows="3"
+                                autofocus>{{$data->deskripsi->latar_belakang_sejarah}}</textarea>
                             @error('latar_belakang_sejarah')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -213,7 +212,7 @@
                         <div class="col-md-8">
                             <input id="riwayat_penanganan" type="text"
                                 class="form-control @error('riwayat_penanganan') is-invalid @enderror"
-                                name="riwayat_penanganan" value="" autofocus>
+                                name="riwayat_penanganan" value="{{$data->deskripsi->riwayat_penanganan}}" autofocus>
 
                             @error('riwayat_penanganan')
                             <span class="invalid-feedback" role="alert">
@@ -229,7 +228,7 @@
                         <div class="col-md-8">
                             <input id="status_hukum" type="text"
                                 class="form-control @error('status_hukum') is-invalid @enderror" name="status_hukum"
-                                value="" autofocus>
+                                value="{{$data->deskripsi->status_hukum}}" autofocus>
 
                             @error('status_hukum')
                             <span class="invalid-feedback" role="alert">
@@ -246,7 +245,7 @@
                         <div class="col-md-8">
                             <input id="kepemilikan" type="text"
                                 class="form-control @error('kepemilikan') is-invalid @enderror" name="kepemilikan"
-                                value="" autofocus>
+                                value="{{$data->deskripsi->kepemilikan}}" autofocus>
 
                             @error('kepemilikan')
                             <span class="invalid-feedback" role="alert">
@@ -261,7 +260,7 @@
 
                         <div class="col-md-8">
                             <input id="kondisi" type="text" class="form-control @error('kondisi') is-invalid @enderror"
-                                name="kondisi" value="" autofocus>
+                                name="kondisi" value="{{$data->deskripsi->kondisi}}" autofocus>
 
                             @error('kondisi')
                             <span class="invalid-feedback" role="alert">
@@ -285,7 +284,7 @@
                         <div class="col-md-8">
                             <input id="nama_pemilik" type="text"
                                 class="form-control @error('nama_pemilik') is-invalid @enderror" name="nama_pemilik"
-                                value="" autofocus>
+                                value="{{$data->pemilik->nama}}" autofocus>
 
                             @error('nama_pemilik')
                             <span class="invalid-feedback" role="alert">
@@ -300,7 +299,7 @@
 
                         <div class="col-md-8">
                             <input id="nik" type="text" class="form-control @error('nik') is-invalid @enderror"
-                                name="nik" value="" autofocus>
+                                name="nik" value="{{$data->pemilik->nik}}" autofocus>
 
                             @error('nik')
                             <span class="invalid-feedback" role="alert">
@@ -315,7 +314,7 @@
 
                         <div class="col-md-8">
                             <input id="no_hp" type="text" class="form-control @error('no_hp') is-invalid @enderror"
-                                name="no_hp" value="" autofocus>
+                                name="no_hp" value="{{$data->pemilik->no_hp}}" autofocus>
 
                             @error('no_hp')
                             <span class="invalid-feedback" role="alert">
@@ -330,7 +329,7 @@
 
                         <div class="col-md-8">
                             <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="" autofocus>
+                                name="email" value="{{$data->pemilik->email}}" autofocus>
 
                             @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -347,7 +346,7 @@
                         <div class="col-md-8">
                             <input id="alamat_pemilik" type="text"
                                 class="form-control @error('alamat_pemilik') is-invalid @enderror" name="alamat_pemilik"
-                                value="" autofocus>
+                                value="{{$data->pemilik->alamat}}" autofocus>
 
                             @error('alamat_pemilik')
                             <span class="invalid-feedback" role="alert">
@@ -372,7 +371,7 @@
                         <div class="col-md-8">
                             <input id="nilai_penting" type="text"
                                 class="form-control @error('nilai_penting') is-invalid @enderror" name="nilai_penting"
-                                value="" autofocus>
+                                value="{{$data->penilaian->nilai_penting}}" autofocus>
 
                             @error('nilai_penting')
                             <span class="invalid-feedback" role="alert">
@@ -389,7 +388,7 @@
                         <div class="col-md-8">
                             <input id="dasar_rekomendasi" type="text"
                                 class="form-control @error('dasar_rekomendasi') is-invalid @enderror"
-                                name="dasar_rekomendasi" value="" autofocus>
+                                name="dasar_rekomendasi" value="{{$data->penilaian->dasar_rekomendasi}}" autofocus>
 
                             @error('dasar_rekomendasi')
                             <span class="invalid-feedback" role="alert">
@@ -406,7 +405,7 @@
                         <div class="col-md-8">
                             <input id="penjelasan_tambahan" type="text"
                                 class="form-control @error('penjelasan_tambahan') is-invalid @enderror"
-                                name="penjelasan_tambahan" value="" autofocus>
+                                name="penjelasan_tambahan" value="{{$data->penilaian->penjelasan_tambahan}}" autofocus>
 
                             @error('penjelasan_tambahan')
                             <span class="invalid-feedback" role="alert">
@@ -435,7 +434,7 @@
                             <textarea id="latar_belakang_penetapan" type="text"
                                 class="form-control @error('latar_belakang_penetapan') is-invalid @enderror"
                                 name="latar_belakang_penetapan" aria-label="With textarea" rows="3"
-                                autofocus></textarea>
+                                autofocus>{{$data->penetapan->latar_belakang_penetapan}}</textarea>
                             @error('latar_belakang_penetapan')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -451,7 +450,7 @@
                         <div class="col-md-8">
                             <input id="hasil_verifikasi" type="text"
                                 class="form-control @error('hasil_verifikasi') is-invalid @enderror"
-                                name="hasil_verifikasi" value="" autofocus>
+                                name="hasil_verifikasi" value="{{$data->penetapan->hasil_verifikasi}}" autofocus>
 
                             @error('hasil_verifikasi')
                             <span class="invalid-feedback" role="alert">
@@ -467,7 +466,9 @@
 
                         <div class="col-md-8">
                             <select name="hasil_verifikasi" id="hasil_verifikasi" class="form-control">
-                                <option value="Belum Terverifikasi" selected>Belum Terverifikasi</option>
+                                <option value="{{$data->penetapan->hasil_verifikasi}}" selected>
+                                    {{$data->penetapan->hasil_verifikasi}}</option>
+                                <option value="Belum Terverifikasi">Belum Terverifikasi</option>
                                 <option value="Diterima">Diterima</option>
                                 <option value="Ditolak">Ditolak</option>
                             </select>
@@ -480,9 +481,14 @@
                     </div>
 
                     <div class="form-group row mb-0">
-                        <div class="text-md-right col-md-8 offset-md-2">
+                        <div class="text-md-left col-md-6 offset-md-2">
                             <button type="submit" class="btn btn-success" value=""><i class="fas fa-save mr-2"></i>
                                 Simpan</button>
+                        </div>
+
+                        <div class="col-md-2 text-right">
+                            <a href="" class="btn btn-danger btn-md" data-toggle="modal" data-target="#deleteModal"
+                                role="button" aria-disabled="true"><i class="fas fa-trash-alt mr-2"></i>Hapus</a>
                         </div>
                     </div>
                 </div>
@@ -490,7 +496,37 @@
 
         </form>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus Data?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Hapus {{$data->nama}} ?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
+
+                    <form method="GET" action="/cagar/delete/{{$data->id}}">
+                        @csrf
+                        <button href="/cagar/delete/{{$data->id}}" onclick="event.preventDefault();
+                                                this.closest('form').submit();" class="btn btn-danger"><i
+                                class="fas fa-save mr-2"></i>Hapus</button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+
 
 <script src="{{ asset('admin-lte/plugins/jquery/jquery.min.js') }}"></script>
 <script>

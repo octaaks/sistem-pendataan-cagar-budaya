@@ -26,6 +26,7 @@ Route::middleware('role:user')->get('cagar', 'CagarController@index')->name('cag
 Route::middleware('role:user')->get('cagar/create', 'CagarController@create')->name('create_cagar');
 Route::middleware('role:user')->post('cagar/store', 'CagarController@store')->name('store_cagar');
 Route::middleware('role:user')->get('cagar/{id}', 'CagarController@show')->name('show_cagar');
+Route::middleware('role:user')->get('cagar/edit/{id}', 'CagarController@edit')->name('edit_cagar');
 Route::middleware('role:user')->post('cagar/update/{id}', 'CagarController@update')->name('update_cagar');
 Route::middleware('role:user')->get('cagar/delete/{id}', 'CagarController@destroy')->name('delete_cagar');
 
@@ -36,6 +37,7 @@ Route::middleware('role:admin')->get('user', 'UserController@index')->name('user
 Route::middleware('role:admin')->get('user/create', 'UserController@create')->name('create_user');
 Route::middleware('role:admin')->post('user/store', 'UserController@store')->name('store_user');
 Route::middleware('role:admin')->get('user/{id}', 'UserController@show')->name('show_user');
+Route::middleware('role:admin')->get('user/edit/{id}', 'UserController@edit')->name('edit_user');
 Route::middleware('role:admin')->post('user/update/{id}', 'UserController@update')->name('update_user');
 Route::middleware('role:admin')->get('user/delete/{id}', 'UserController@destroy')->name('delete_user');
 

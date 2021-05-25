@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 
+<title>
+    Pendataan Dinas Pariwisata dan Kebudayaan Kota Salatiga
+</title>
+
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 

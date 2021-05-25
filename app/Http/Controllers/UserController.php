@@ -71,7 +71,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = User::find($id);
+        return view('menu_admin.edit_user', ['data'=>$data]);
     }
 
     /**
@@ -89,6 +90,7 @@ class UserController extends Controller
             'name' => $param['name'],
             'email' => $param['email'],
             'nip' => $param['nip'],
+            'password' => Hash::make($param['password']),
             'no_hp' => $param['no_hp'],
         ];
 

@@ -19,7 +19,7 @@ class ReportController extends Controller
         $semua = CagarIdentitas::all()->count();
         $myString = 'Diterima';
 
-        $terverifikasi          = CagarPenetapan::query()->where('hasil_verifikasi', 'like', 'Diterima')->get()->count();
+        $terverifikasi          = CagarPenetapan::query()->where('hasil_verifikasi', 'like', 'Terverifikasi')->get()->count();
         $tidak_terverifikasi    = CagarPenetapan::query()->where('hasil_verifikasi', 'like', 'Belum Terverifikasi')->get()->count();
         
         $deleted = CagarIdentitas::onlyTrashed()->get()->count();

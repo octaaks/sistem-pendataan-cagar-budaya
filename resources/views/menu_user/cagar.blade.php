@@ -46,6 +46,7 @@
                     <th>Nama Cagar Budaya</th>
                     <th>Alamat</th>
                     <th>Status Verifikasi</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -55,6 +56,8 @@
                     <td><a href="cagar/{{$item -> id}}">{{ $item-> nama}}</a></td>
                     <td>{{ $item-> alamat}}</td>
                     <td>{{ $item-> penetapan -> hasil_verifikasi}}</td>
+                    <td><a href="cagar/edit/{{$item -> id}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>

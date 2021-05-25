@@ -128,7 +128,8 @@ class CagarController extends Controller
     
     public function edit($id)
     {
-        //
+        $data = CagarIdentitas::find($id);
+        return view('menu_user.edit_cagar', ['data'=>$data]);
     }
     
     public function update(Request $request, $id)

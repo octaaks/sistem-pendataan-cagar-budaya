@@ -16,50 +16,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin-lte/dist/css/adminlte.min.css') }}">
 
-    <!-- Styles -->
-    <style>
-    .full-height {
-        height: 100vh;
-    }
-
-    .flex-center {
-        align-items: center;
-        display: flex;
-        justify-content: center;
-    }
-
-    .position-ref {
-        position: relative;
-    }
-
-    .top-right {
-        position: absolute;
-        right: 10px;
-        top: 18px;
-    }
-
-    .content {
-        text-align: center;
-    }
-
-    .title {
-        font-size: 84px;
-    }
-
-    .links>a {
-        color: #636b6f;
-        padding: 0 25px;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: .1rem;
-        text-decoration: none;
-        text-transform: uppercase;
-    }
-
-    .m-b-md {
-        margin-bottom: 30px;
-    }
-    </style>
 </head>
 
 <body>
@@ -86,79 +42,32 @@
                 </div> -->
 
                 <div class="card-body">
-                    <div class="form-group row">
-                        <label for="nip" class="col-md-2 col-form-label text-md-left">NIP</label>
 
-                        <div class="col-md-8">
-                            <input id="nip" type="text" class="form-control @error('nip') is-invalid @enderror"
-                                name="nip" value="{{$data->nip}}" autofocus>
-
-                            @error('nip')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="name" class="col-md-2 col-form-label text-md-left">Nama</label>
-
-                        <div class="col-md-8">
-                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                name="name" value="{{$data->name}}" autofocus>
-
-                            @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="email" class="col-md-2 col-form-label text-md-left">Email</label>
-
-                        <div class="col-md-8">
-                            <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                                name="email" value="{{$data->email}}" autofocus autocomplete="off" autocorrect="off"
-                                autocapitalize="off" spellcheck="false">
-
-                            @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="no_hp" class="col-md-2 col-form-label text-md-left">No HP</label>
-
-                        <div class="col-md-8">
-                            <input id="no_hp" type="text" class="form-control @error('no_hp') is-invalid @enderror"
-                                name="no_hp" value="{{$data->no_hp}}" autofocus>
-
-                            @error('no_hp')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                    </div>
-
-                    <div class="form-group row mb-0">
-                        <div class="text-md-left col-md-6 offset-md-2">
-                            <input type="submit" class="btn btn-success" value="Simpan">
-                        </div>
-                        <div class="col-md-2 text-right">
-                            <a href="" class="btn btn-danger btn-md" data-toggle="modal" data-target="#deleteModal"
-                                role="button" aria-disabled="true">Hapus</a>
-                        </div>
+                    <table id="example1" class="table table-bordered table-striped">
+                        <tr>
+                            <th>NIP</th>
+                            <td>{{$data->nip}}</td>
+                        </tr>
+                        <tr>
+                            <th>Nama</th>
+                            <td>{{$data->name}}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{$data->email}}</td>
+                        </tr>
+                        <tr>
+                            <th>No HP</th>
+                            <td>{{$data->no_hp}}</td>
+                        </tr>
+                    </table>
+                    <div class="col-md-12 text-center">
+                        <a href="/user/edit/{{$data->id}}" class="center btn btn-info btn-md mt-5 mb-5" role="button"
+                            aria-disabled="true"><i class="fas fa-edit"></i> Edit
+                            Data</a>
                     </div>
                 </div>
             </div>
-
         </form>
     </div>
 

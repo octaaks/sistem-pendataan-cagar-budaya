@@ -45,6 +45,7 @@
                     <th>No</th>
                     <th>Nama</th>
                     <th>Peran</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -53,6 +54,8 @@
                     <td>{{ $index +1 }}</td>
                     <td><a href="user/{{$item -> id}}">{{ $item->name}}</a></td>
                     <td>{{$item->Roles()->first()->name}}</td>
+                    <td><a href="user/edit/{{$item -> id}}" class="btn btn-info btn-sm"><i class="fas fa-edit"></i></a>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
