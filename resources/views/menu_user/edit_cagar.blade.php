@@ -469,8 +469,7 @@
                                 <option value="{{$data->penetapan->hasil_verifikasi}}" selected>
                                     {{$data->penetapan->hasil_verifikasi}}</option>
                                 <option value="Belum Terverifikasi">Belum Terverifikasi</option>
-                                <option value="Diterima">Diterima</option>
-                                <option value="Ditolak">Ditolak</option>
+                                <option value="Terverifikasi">Terverifikasi</option>
                             </select>
                             @error('hasil_verifikasi')
                             <span class="invalid-feedback" role="alert">

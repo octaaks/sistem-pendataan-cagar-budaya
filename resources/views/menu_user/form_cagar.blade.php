@@ -468,8 +468,7 @@
                         <div class="col-md-8">
                             <select name="hasil_verifikasi" id="hasil_verifikasi" class="form-control">
                                 <option value="Belum Terverifikasi" selected>Belum Terverifikasi</option>
-                                <option value="Diterima">Diterima</option>
-                                <option value="Ditolak">Ditolak</option>
+                                <option value="Terverifikasi">Terverifikasi</option>
                             </select>
                             @error('hasil_verifikasi')
                             <span class="invalid-feedback" role="alert">
